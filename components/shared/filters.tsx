@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title, FilterCheckbox, RangeSlider } from './index';
+import { Title, FilterCheckbox, RangeSlider, CheckboxFiltersGroup } from './index';
 import { Input } from '../ui';
 
 interface Props {
@@ -13,8 +13,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
 
       {/* Верхние чекбоксы */}
       <div className="flex flex-col gap-4">
-        <FilterCheckbox text="Можно собирать" value="1" />
-        <FilterCheckbox text="Новинки" value="2" />
+        <FilterCheckbox text="Можно собирать" value="3" />
+        <FilterCheckbox text="Новинки" value="4" />
       </div>
 
       {/* Фильтр цен */}
@@ -28,6 +28,27 @@ export const Filters: React.FC<Props> = ({ className }) => {
       </div>
 
       {/* Фильтр ингридиентов */}
+      <CheckboxFiltersGroup
+        title="Ингридиенты"
+        className="mt-5"
+        limit={6}
+        defaultItems={[
+          { text: 'Сырный соус', value: '1' },
+          { text: 'Моцарелла', value: '2' },
+          { text: 'Чеснок', value: '3' },
+          { text: 'Соленые огурчики', value: '4' },
+          { text: 'Красный лук', value: '5' },
+          { text: 'Томаты', value: '6' },
+        ]}
+        items={[
+          { text: 'Сырный соус', value: '1' },
+          { text: 'Моцарелла', value: '2' },
+          { text: 'Чеснок', value: '3' },
+          { text: 'Соленые огурчики', value: '4' },
+          { text: 'Красный лук', value: '5' },
+          { text: 'Томаты', value: '6' },
+        ]}
+      />
     </div>
   );
 };
