@@ -3,6 +3,7 @@
 import React from 'react';
 import { FilterCheckbox, FilterCheckboxProps } from './filter-checkbox';
 import { Input } from '../ui/index';
+import { Slice } from 'lucide-react';
 
 type Item = FilterCheckboxProps;
 
@@ -37,7 +38,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
         </div>
       )}
       <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar">
-        {items.map((item, index) => (
+        {items.slice(0, !showAll ? limit : items.length).map((item, index) => (
           <FilterCheckbox
             key={index}
             text={item.text}
@@ -47,6 +48,14 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
             onCheckedChange={(ids) => console.log(ids)}
           />
         ))}
+
+        {items.length > limit ? (
+          <button onClick={() => setShowAll(!showAll)}>
+            {showAll ? 'показать все' : 'скрыть'}
+          </button>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );
