@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { useIntersection } from 'react-use';
 import { ProductCart, Title } from './index';
 import React from 'react';
 
@@ -17,6 +18,10 @@ export const ProductGroupList: React.FC<Props> = ({
   listClassName,
   className,
 }) => {
+  const intersectionRef = React.useRef(null);
+  const intersection = useIntersection(intersectionRef, {
+    threshold: 0.4,
+  });
   return (
     <div className={className}>
       <Title text={title} size="lg" className="font-extrabold mb-5" />
