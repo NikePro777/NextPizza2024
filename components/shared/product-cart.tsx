@@ -16,8 +16,8 @@ export const ProductCart: React.FC<Props> = ({ id, name, price, imageUrl, classN
   return (
     <div className={className}>
       <Link href={`/product/${id}`}>
-        <div className="flex justify-center p-6 bg-secondary rounded-lg h-[260px]">
-          <img src={imageUrl} alt={name} />
+        <div className="flex justify-center p-4 bg-secondary rounded-lg h-[260px]">
+          <img className="rounded-4xl" src={imageUrl} alt={name} />
         </div>
 
         <Title text={name} size="sm" className="mb-1 mt-3 font-bold"></Title>

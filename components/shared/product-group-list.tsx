@@ -25,8 +25,8 @@ export const ProductGroupList: React.FC<Props> = ({
           <ProductCart
             id={product.id}
             name={product.name}
-            price={product.price}
-            // price={product.item[0]}
+            // price={product.price}
+            price={product.item[0].price}
             imageUrl={product.imageUrl}
             key={product.id}
           />
