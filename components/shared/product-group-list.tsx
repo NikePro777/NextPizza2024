@@ -1,3 +1,5 @@
+'use client';
+
 import { cn } from '@/lib/utils';
 import { useIntersection } from 'react-use';
 import { ProductCart, Title } from './index';
