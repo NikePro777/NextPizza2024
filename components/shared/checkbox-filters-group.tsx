@@ -38,8 +38,6 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
     ? items.filter((item) => item.text.toLowerCase().includes(search.toLowerCase()))
     : defaultItems.slice(0, limit);
 
-  console.log(list);
-
   return (
     <div className={className}>
       <p className="font-bold mb-3">{title}</p>
