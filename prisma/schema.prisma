@@ -35,7 +35,7 @@ model Product {
     categoryId Int
 }
 
-model ProductItem{
+model ProductItem {
     id Int @id @default(autoincrement())
     price Int
     size Int?
@@ -69,4 +69,16 @@ model Cart {
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+}
+
+model CartItem {
+    id Int @id @default(autoincrement())
+
+    productItem ProductItem @relation(fields: [productItemId], references: [id])
+    productItemId Int
+
+    cart Cart @relation(fields: [cartId], references: [id])
+    cartId Int
+
+    quantity Int
 }
