@@ -130,6 +130,30 @@ async function up() {
       generateProductItem({ productId: 17 }),
     ],
   });
+  await prisma.cart.createMany({
+    data: [
+      {
+        userId: 1,
+        totalAmount: 0,
+        token: '123',
+      },
+      {
+        userId: 2,
+        totalAmount: 0,
+        token: '1223',
+      },
+    ],
+  });
+  await prisma.cartItem.create({
+    data: {
+      productItemId: 1,
+      cartId: 1,
+      quantity: 2,
+      ingredients: {
+        connect: [{ id: 2 }, { id: 1 }, { id: 3 }],
+      },
+    },
+  });
 }
 // down - функция очистки данных
 async function down() {
@@ -137,6 +161,9 @@ async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "ProductItem" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Ingredient" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Cart" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "CartItem" RESTART IDENTITY CASCADE`;
 }
 // main - функция запускающая все функции внутри
 async function main() {
