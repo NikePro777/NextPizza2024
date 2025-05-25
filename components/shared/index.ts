@@ -1,3 +1,4 @@
+export { SearchInput } from './search-input';
 export { ProductCart } from './product-cart';
 export { ProductGroupList } from './product-group-list';
 export { CheckboxFiltersGroup } from './checkbox-filters-group';
